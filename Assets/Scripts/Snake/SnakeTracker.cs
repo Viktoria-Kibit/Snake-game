@@ -13,6 +13,6 @@ public class SnakeTracker : MonoBehaviour
 
    private Vector3 GetTargetPosition()
    {
-        return new Vector3(transform.position.x, transform.position.y + _offsetY, transform.position.z);
+        return new Vector3(transform.position.x, _snakeHead.transform.position.y + _offsetY, transform.position.z);
    }
 }
