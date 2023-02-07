@@ -15,6 +15,8 @@ public class Snake : MonoBehaviour
     private SnakeInput _snakeInput;
     private List<Segment> _tail;
 
+    public int Tail => _tail.Count;
+
     public event UnityAction<int> SizeUpdated;
 
     private void Start()
@@ -47,11 +49,11 @@ public class Snake : MonoBehaviour
 
     private void Move(Vector2 nextPosition)
     {
-        var prevPosition = _snakeHead.transform.position;
+        Vector3 prevPosition = _snakeHead.transform.position;
 
         foreach(var tailSegment in _tail)
         {
-            var tempPosition = tailSegment.transform.position;
+            Vector3 tempPosition = tailSegment.transform.position;
             tailSegment.transform.position = Vector2.Lerp(tailSegment.transform.position, prevPosition, _tailSpirininess * Time.fixedDeltaTime);
             prevPosition = tempPosition;
         }

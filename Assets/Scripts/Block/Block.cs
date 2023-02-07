@@ -23,6 +23,7 @@ public class Block : MonoBehaviour
     {
         _filling++;
         FillingProgress?.Invoke(LeftToFill);
+        
         if(_filling == _destroyPrice) Destroy(gameObject);
     }
 }
