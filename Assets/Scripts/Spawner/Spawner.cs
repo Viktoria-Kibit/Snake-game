@@ -20,6 +20,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Bonus _bonusTemplate;
     [SerializeField] private int _bonusSpawnChance;
 
+    [Header("Finish")]
+    [SerializeField] private Finish _finish;
+    [SerializeField] private int _distanceToFinish;
+
     private BlockSpawnPoint[] _blockSpawnPoints;
     private WallSpawnPoint[] _wallSpawnPoints;
     private BonusSpawnPoint[] _bonusSpawnPoints;
@@ -43,6 +47,10 @@ public class Spawner : MonoBehaviour
             MoveSpawner(_distanceBetweenRandomLine);
             GenerateRandomLine(_blockSpawnPoints, _blockTemplate.gameObject,_blockSpawnChange);
         }
+
+        MoveSpawner(_distanceToFinish);
+        GenerateElement(transform.position,_finish.gameObject);
+
     }
 
     private void GenerateFullLine(SpawnPoint[] spawnPoints, GameObject spawnObject)

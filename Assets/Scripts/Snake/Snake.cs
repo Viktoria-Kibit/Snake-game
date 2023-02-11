@@ -15,7 +15,16 @@ public class Snake : MonoBehaviour
     private SnakeInput _snakeInput;
     private List<Segment> _tail;
 
+    // public float _rotationSpeed = 50;
+    // public float _lerpTimeX;
+    // public float _lerpTimeY;
+
+    // private Vector3 _refVelocity;
+
+
     public int Tail => _tail.Count;
+    
+    public SnakeHead SnakeHead => _snakeHead;
 
     public event UnityAction<int> SizeUpdated;
 
@@ -49,12 +58,22 @@ public class Snake : MonoBehaviour
 
     private void Move(Vector2 nextPosition)
     {
+        // float curSpeed = _speed;
+        // if(tailSegment.Count > 0)
+        //     tailSegment[0].Translate(Vector2.up *curSpeed * Time.smoothDeltaTime);
+
+        // float maxX = Camera.main.orthographicSize * Screen.width /Screen.height;
+
+        // if(tailSegment.Count > 0)
+        // {
+        //     if(tailSegment[0].position)
+        // } 
         Vector3 prevPosition = _snakeHead.transform.position;
 
         foreach(var tailSegment in _tail)
         {
             Vector3 tempPosition = tailSegment.transform.position;
-            tailSegment.transform.position = Vector2.Lerp(tailSegment.transform.position, prevPosition, _tailSpirininess * Time.fixedDeltaTime);
+            tailSegment.transform.position = Vector2.Lerp(tailSegment.transform.position, prevPosition, _tailSpirininess * Time.smoothDeltaTime);
             prevPosition = tempPosition;
         }
 

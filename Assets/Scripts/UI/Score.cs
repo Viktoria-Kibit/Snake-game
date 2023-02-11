@@ -9,6 +9,8 @@ public class Score : MonoBehaviour
     private TMP_Text _scoreText;
     private int _scoreValue;
 
+    public int ScoreValue => _scoreValue;
+
     private void Awake() =>  _scoreText = GetComponent<TMP_Text>();
 
     private void OnEnable() => _snakeHead.BlockCollided +=OnBlockCollieded;
@@ -19,5 +21,6 @@ public class Score : MonoBehaviour
     {
         _scoreValue++;
         _scoreText.text = _scoreValue.ToString();
+
     }
 }
